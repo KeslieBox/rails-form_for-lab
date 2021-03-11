@@ -5,9 +5,11 @@ class StudentsController < ApplicationController
 
     def create
         # binding.pry 
+        ##the following doesn't work because it needs to require these fields be filled in
         # @student = Student.create(first_name: params[:first_name], last_name: params[:last_name])
         @student = Student.create(params.require(:student).permit(:first_name, :last_name))
-        redirect_to student_path(@student)
+exit
+         redirect_to student_path(@student)
     end
 
     def show
